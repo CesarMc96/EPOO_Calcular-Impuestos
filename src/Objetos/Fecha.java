@@ -1,13 +1,24 @@
 package Objetos;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Objects;
 
 public class Fecha {
 
     private Integer dia;
     private Integer mes;
     private Integer anio;
+    private static HashSet<Fecha> diasInhabiles = new HashSet<>();
+    
+    public static void agregarDiaInhabil(Fecha f){
+        diasInhabiles.add(f);
+    }
 
+    public static boolean esDiaInhabil(Fecha f){
+        return diasInhabiles.contains(f);
+    }
+    
     public Fecha(Integer dia, Integer mes, Integer anio) {
         this.dia = dia;
         this.mes = mes;
@@ -20,39 +31,42 @@ public class Fecha {
         dia = c1.get(Calendar.DAY_OF_MONTH);
         mes = c1.get(Calendar.MONTH) + 1;
         anio = c1.get(Calendar.YEAR);
-//        Date date = new Date();
-//        dia = date.getDay() + 1;
-//        mes = date.getMonth() + 1;
-//        anio = date.getYear() + 1900;
+    }
+
+    public int diasDelMes() {
+        int diaAuxiliar = 0;
+        
+        switch (mes) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                diaAuxiliar = 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                diaAuxiliar = 30;
+                break;
+            case 2:
+                diaAuxiliar = anio % 4 == 0 ? 29 : 28;
+                break;
+        }
+        
+        return diaAuxiliar;
     }
 
     public boolean fechaValida() {
-        int diaAuxiliar = 0;
 
         if ((anio >= 1900) && (anio <= 2100)) {
             if ((mes > 0) && (mes < 13)) {
-                switch (mes) {
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
-                        diaAuxiliar = 31;
-                        break;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
-                        diaAuxiliar = 30;
-                        break;
-                    case 2:
-                        diaAuxiliar = anio % 4 == 0 ? 29 : 28;
-                        break;
-                }
+                
 
-                if ((dia >= 1) && (dia < diaAuxiliar)) {
+                if ((dia >= 1) && (dia < diasDelMes())) {
                     return true;
                 }
             }
@@ -61,70 +75,24 @@ public class Fecha {
         return false;
     }
 
-    public void diaFeriado(Integer dia, Integer mes, Integer anio) {
-
-    }
-
     public void aumentar() {
-        int diaAuxiliar = 0;
         dia++;
 
-        switch (mes) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                diaAuxiliar = 31;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                diaAuxiliar = 30;
-                break;
-            case 2:
-                diaAuxiliar = anio % 4 == 0 ? 29 : 28;
-                break;
-        }
-
-        if (dia > diaAuxiliar) {
+        if (dia > diasDelMes()) {
             mes++;
+            dia = 1;
         }
         if (mes > 12) {
             anio++;
+            mes = 1;
         }
     }
 
     public void aumentar(Integer opcional) {
-        int diaAuxiliar = 0;
         dia = dia + opcional;
 
-        switch (mes) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                diaAuxiliar = 31;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                diaAuxiliar = 30;
-                break;
-            case 2:
-                diaAuxiliar = anio % 4 == 0 ? 29 : 28;
-                break;
-        }
-
-        if (dia > diaAuxiliar) {
-            dia = dia - diaAuxiliar;
+        if (dia > diasDelMes()) {
+            dia = dia - diasDelMes();
             mes++;
         }
         if (mes > 12) {
@@ -132,34 +100,30 @@ public class Fecha {
         }
     }
 
+    public void aumentarDiaInhabil(){
+        do{
+            aumentar();
+        } while (esDiaInhabil(this));
+    }
+    
+    //corregir
+    public void aumentarDiaInhabil(String ...Ds){
+        boolean bandera = false;
+        
+        do{
+            aumentar();
+            for (int i = 0; i < Ds.length; i++) {
+                
+            }
+        } while (esDiaInhabil(this));
+    }
+        
     public void disminuir() {
-        int diaAuxiliar = 0;
         dia--;
-
-        switch (mes) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                diaAuxiliar = 31;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                diaAuxiliar = 30;
-                break;
-            case 2:
-                diaAuxiliar = anio % 4 == 0 ? 29 : 28;
-                break;
-        }
 
         if (dia <= 0) {
             mes--;
-            dia = diaAuxiliar;
+            dia = diasDelMes();
         }
         if (mes <= 0) {
             anio--;
@@ -168,33 +132,11 @@ public class Fecha {
     }
 
     public void disminuir(Integer opcional) {
-        int diaAuxiliar = 0;
         dia = dia - opcional;
-
-        switch (mes) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                diaAuxiliar = 31;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                diaAuxiliar = 30;
-                break;
-            case 2:
-                diaAuxiliar = anio % 4 == 0 ? 29 : 28;
-                break;
-        }
 
         if (dia <= 0) {
             mes--;
-            dia = diaAuxiliar + dia;
+            dia = diasDelMes() + dia;
         }
         if (mes <= 0) {
             anio--;
@@ -202,8 +144,37 @@ public class Fecha {
         }
     }
 
+    public int compareTo(Fecha f){
+        int resultado = this.anio - f.anio;
+        if(resultado == 0){
+            resultado = this.mes - f.mes;
+            if(resultado == 0){
+                resultado = this.dia - f.dia;
+            }
+        }
+        return resultado;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Fecha){
+            Fecha f = (Fecha)obj;
+            return this.compareTo(f) == 0;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.dia);
+        hash = 97 * hash + Objects.hashCode(this.mes);
+        hash = 97 * hash + Objects.hashCode(this.anio);
+        return hash;
+    }
+    
     public String diaSemana() {
-        int a = 0, b = 0, c = 0, d = 0, e = 0, na = 0;
+        int a = 0, b = 0, c = 0, d = 0, e, na = 0;
 
         if (anio >= 1900 && anio <= 1999) {
             a = 1;
@@ -264,7 +235,7 @@ public class Fecha {
         int total = a + b + c + d + e;
         do {
             total = total - 7;
-        } while (total > 0 && total < 8);
+        } while (total > 7);
 
         String semana = null;
 
@@ -298,7 +269,7 @@ public class Fecha {
     @Override
     public String toString() {
 
-        return String.format("%d/%d/%d", dia, mes, anio);
+        return String.format("%02d/%02d/%d", dia, mes, anio);
     }
 
     public Integer getDia() {
@@ -326,5 +297,3 @@ public class Fecha {
     }
 
 }
-
-//agregar dias inhabiles
