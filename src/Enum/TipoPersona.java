@@ -1,5 +1,5 @@
 
-package Objetos;
+package Enum;
 
 public enum TipoPersona {
     Fisica,

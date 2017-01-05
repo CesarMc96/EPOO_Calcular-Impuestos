@@ -1,6 +1,6 @@
 
 package Objetos;
 
-public class Direccion {
+public class Regimen {
     
 }

@@ -1,6 +1,7 @@
 
 package Objetos;
 
+import Enum.TipoPersona;
 import Excepciones.RFCException;
 
 public class RFC {

@@ -1,7 +1,9 @@
 
 package Impuestos;
 
+import Enum.TipoRegimen;
 import Objetos.Fecha;
+import Objetos.Regimen;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -43,6 +45,12 @@ public class Impuestos {
         
         //HashSet esArrayList pero no permite usar repetidos
         HashSet<Fecha> fechas = new HashSet<>();
+        
+        /*DIA 4*/
+        
+        HashSet<TipoRegimen> regimenes = new HashSet<>();
+        regimenes.add(Regimen.Cedular);
+        
         
     }
     
