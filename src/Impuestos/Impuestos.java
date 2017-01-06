@@ -12,6 +12,7 @@ public class Impuestos {
     public static void main(String[] args) {
         
         /*DIA 1*/
+        System.out.println("Fechas-----------");
         Fecha f = new Fecha(1,3,2016);
         System.out.println(f);
         System.out.println(f.fechaValida());
@@ -27,11 +28,13 @@ public class Impuestos {
         System.out.println(f.diaSemana());
         
         /*DIA 2*/
+        System.out.println("Dias Inhabiles--------------");
+        
         Fecha persona1 = new Fecha(20, 11, 96);
         Fecha persona2 = new Fecha(12, 05, 95);
         
         System.out.println(persona1.compareTo(persona2));
-        System.err.println(persona2.compareTo(persona1));
+        System.out.println(persona2.compareTo(persona1));
         
         ArrayList<Fecha> fechasInhabiles = new ArrayList<>();
         
@@ -43,14 +46,19 @@ public class Impuestos {
             System.out.println(fechaInhabile);
         }
         
-        //HashSet esArrayList pero no permite usar repetidos
+        //HashSet es ArrayList pero no permite usar repetidos
         HashSet<Fecha> fechas = new HashSet<>();
+        fechas.add(f);
+        fechas.add(f);
+        
+        
+        
         
         /*DIA 4*/
-        
+        /*
         HashSet<TipoRegimen> regimenes = new HashSet<>();
-        regimenes.add(Regimen.Cedular);
-        
+        //regimenes.add(Regimen.Cedular);
+        */
         
     }
     
