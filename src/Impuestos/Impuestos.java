@@ -1,7 +1,9 @@
 
 package Impuestos;
 
+import Enum.TipoDireccion;
 import Enum.TipoRegimen;
+import Modelo.Direccion;
 import Objetos.Fecha;
 import Objetos.Regimen;
 import java.util.ArrayList;
@@ -51,14 +53,27 @@ public class Impuestos {
         fechas.add(f);
         fechas.add(f);
         
+        System.out.println("");
         
         
-        
-        /*DIA 4*/
+        /*DIA 3*/
         /*
         HashSet<TipoRegimen> regimenes = new HashSet<>();
         //regimenes.add(Regimen.Cedular);
         */
+        
+        Direccion direccion1 = new Direccion(TipoDireccion.Fiscal, "Reforma", "405", "1", "centro", "68100", "santa lucia");
+        Direccion direccion2 = new Direccion(TipoDireccion.Fiscal, "Reforma", "405", "1", "centro", "68100", "santa lucia");
+        Direccion direccion3 = new Direccion(TipoDireccion.Sucursal, "Reforma", "405", "1", "centro", "68100", "santa lucia");
+        
+        HashSet<Direccion> direcciones = new HashSet<>();
+        direcciones.add(direccion1);
+        direcciones.add(direccion2);
+        
+        for(Direccion direccione : direcciones) {
+            System.out.println(direccione);
+        }
+        
         
     }
     

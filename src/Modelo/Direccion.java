@@ -2,6 +2,7 @@
 package Modelo;
 
 import Enum.TipoDireccion;
+import java.util.Objects;
 
 public class Direccion {
     private TipoDireccion tp;
@@ -26,6 +27,49 @@ public class Direccion {
         boolean resultado = true;
         resultado = resultado && codigoPostal.matches("^[0-9] {5} S");
         return resultado;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 19 * hash + Objects.hashCode(this.tp);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Direccion other = (Direccion) obj;
+        if (!Objects.equals(this.calle, other.calle)) {
+            return false;
+        }
+        if (!Objects.equals(this.numExterior, other.numExterior)) {
+            return false;
+        }
+        if (!Objects.equals(this.numInterior, other.numInterior)) {
+            return false;
+        }
+        if (!Objects.equals(this.colonia, other.colonia)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigoPostal, other.codigoPostal)) {
+            return false;
+        }
+        if (!Objects.equals(this.municipio, other.municipio)) {
+            return false;
+        }
+        if (this.tp != other.tp) {
+            return false;
+        }
+        return true;
     }
 
     public TipoDireccion getTp() {

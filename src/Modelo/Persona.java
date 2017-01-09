@@ -1,10 +1,10 @@
 
 package Modelo;
 
+import Enum.TipoRegimen;
 import Objetos.Fecha;
 import Objetos.RFC;
 import java.util.HashSet;
-import Objetos.Regimen;
 
 public abstract class Persona {
     
@@ -13,5 +13,7 @@ public abstract class Persona {
     private RFC rfc;
     private Fecha fechaInscripcion;
     private Fecha fechaInicioOperaciones;
-    private Regimen regimen;
+    private HashSet<TipoRegimen> regimenes;
+    
+    
 }
