@@ -296,4 +296,107 @@ public class Fecha {
         this.anio = anio;
     }
 
+    public void edad(Fecha fecha1) {
+
+        if (this.anio == fecha1.getAnio() && this.mes == fecha1.getMes() && this.dia == fecha1.getDia()) {
+            System.out.println("0 Las fechas son iguales.");
+        } else if (this.anio < fecha1.getAnio()) {
+            this.dia = fecha1.getDia() - this.dia;
+
+            if (this.dia < 0) {
+                int mesnuevo = fecha1.getMes();
+
+                if (mesnuevo == 12) {
+                    mesnuevo = 1;
+                } else {
+                    mesnuevo = mesnuevo - 1;
+                }
+
+                switch (mesnuevo) {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        this.dia = fecha1.getDia() + this.dia;
+                        this.dia = (31 + this.dia) - fecha1.getDia();
+                        break;
+
+                    case 2:
+                        this.dia = fecha1.getDia() + this.dia;
+                        this.dia = (28 + this.dia) - fecha1.getDia();
+                        break;
+
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        this.dia = fecha1.getDia() + this.dia;
+                        this.dia = (30 + this.dia) - fecha1.getDia();
+                        break;
+                }
+
+                if (fecha1.getMes() < this.mes) {
+                    this.mes = 12 + mesnuevo - this.mes;
+                    int anionuevo = fecha1.getAnio() - 1;
+                    this.anio = anionuevo - this.anio;
+                } else {
+                    this.mes = fecha1.getMes() - this.mes;
+                    this.anio = fecha1.getAnio() - this.anio;
+                }
+            }
+            System.out.println("La edad es de: " + this.anio + " años");
+        } else {
+            this.dia = this.dia - fecha1.getDia();
+
+            if (this.dia < 0) {
+                int mesnuevo = this.mes;
+
+                if (mesnuevo == 12) {
+                    mesnuevo = 1;
+                } else {
+                    mesnuevo = mesnuevo - 1;
+                }
+
+                switch (mesnuevo) {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        this.dia = fecha1.getDia() + this.dia;
+                        this.dia = (31 + this.dia) - fecha1.getDia();
+                        break;
+
+                    case 2:
+                        this.dia = fecha1.getDia() + this.dia;
+                        this.dia = (28 + this.dia) - fecha1.getDia();
+                        break;
+
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        this.dia = fecha1.getDia() + this.dia;
+                        this.dia = (30 + this.dia) - fecha1.getDia();
+                        break;
+                }
+
+                if (fecha1.getMes() > this.mes) {
+                    this.mes = 12 + mesnuevo - fecha1.getMes();
+                    int anionuevo = this.anio - 1;
+                    this.anio = anionuevo - fecha1.getAnio();
+                } else {
+                    this.mes = -fecha1.getMes() + this.mes;
+                    this.anio = -fecha1.getAnio() + this.anio;
+                }
+            }
+            System.out.println("La edad es de: " + this.anio + " años");
+        }
+    }
+    
 }

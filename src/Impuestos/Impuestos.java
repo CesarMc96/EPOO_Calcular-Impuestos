@@ -14,20 +14,27 @@ public class Impuestos {
     public static void main(String[] args) {
         
         /*DIA 1*/
-        System.out.println("Fechas-----------");
-        Fecha f = new Fecha(1,3,2016);
-        System.out.println(f);
-        System.out.println(f.fechaValida());
-        f.aumentar();
-        System.out.println(f);
+//        System.out.println("Fechas-----------");
+//        Fecha f = new Fecha(1,3,2016);
+//        System.out.println(f);
+//        System.out.println(f.fechaValida());
+//        f.aumentar();
+//        System.out.println(f);
 //        f.disminuir();
 //        f.disminuir();
 //        System.out.println(f);
 //        f.aumentar(27);
 //        System.out.println(f);
-        f.disminuir(3);
+//        f.disminuir(3);
+//        System.out.println(f);
+//        System.out.println(f.diaSemana());
+        
+        Fecha f = new Fecha(20,11,1996);
+        Fecha f1 = new Fecha();
         System.out.println(f);
-        System.out.println(f.diaSemana());
+        System.out.println(f1);
+        f1.edad(f);
+        System.out.println("");
         
         /*DIA 2*/
         System.out.println("Dias Inhabiles--------------");
