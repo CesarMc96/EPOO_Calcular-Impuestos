@@ -2,6 +2,7 @@
 package Modelo;
 
 import Enum.TipoDireccion;
+import Excepciones.DireccionException;
 import java.util.Objects;
 
 public class Direccion {
@@ -13,7 +14,7 @@ public class Direccion {
     private String codigoPostal;
     private String municipio;
 
-    public Direccion(TipoDireccion tp, String calle, String numExterior, String numInterior, String colonia, String codigoPostal, String municipio) {
+    public Direccion(TipoDireccion tp, String calle, String numExterior, String numInterior, String colonia, String codigoPostal, String municipio) throws DireccionException {
         this.tp = tp;
         this.calle = calle.toUpperCase();
         this.numExterior = numExterior;
@@ -21,12 +22,15 @@ public class Direccion {
         this.colonia = colonia;
         this.codigoPostal = codigoPostal;
         this.municipio = municipio;
+        validar();
     }
     
-    public boolean validar(){
-        boolean resultado = true;
-        resultado = resultado && codigoPostal.matches("^[0-9] {5} S");
-        return resultado;
+    public void validar() throws DireccionException{
+        if (!codigoPostal.matches("^[0-9]{5}$")) {
+            throw new DireccionException("CP incorrecto");
+        } else if (!calle.matches("^[A-Z .]*$")) {
+            throw new DireccionException("Calle con caracteres invalidos");
+        }
     }
 
     @Override

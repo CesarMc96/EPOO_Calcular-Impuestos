@@ -1,8 +1,12 @@
 
 package Modelo;
 
-import Enum.TipoEstadoCivil;
+import Excepciones.IntervalosFechaException;
+import Excepciones.PersonaFisicaException;
 import Objetos.Fecha;
+import Objetos.HashConjunto;
+import Objetos.RFC;
+import java.util.HashSet;
 
 public class Fisica extends Persona {
 
@@ -10,18 +14,23 @@ public class Fisica extends Persona {
     private String amaterno;
     private String apaterno;
     private Fecha fNacimiento;
-    private TipoEstadoCivil tec;
 
-    public Fisica(String nombre, String amaterno, String apaterno, Fecha fNacimiento, TipoEstadoCivil tec) {
+    @Override
+    public boolean valido() {
+        boolean resultado = super.valido();
+        return resultado && fNacimiento.edad() >= 18;
+    }
+
+    public Fisica(String nombre, String amaterno, String apaterno, Fecha fNacimiento, HashSet<Direccion> direcciones, String telefono, RFC rfc, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, HashConjunto regimenes) throws IntervalosFechaException, PersonaFisicaException {
+        super(direcciones, telefono, rfc, fechaInscripcion, fechaInicioOperaciones, regimenes);
         this.nombre = nombre;
         this.amaterno = amaterno;
         this.apaterno = apaterno;
         this.fNacimiento = fNacimiento;
-        this.tec = tec;
-    }
-
-    public boolean valida() {
-        return fNacimiento.edad() >= 18;
+        
+        if(!valido()){
+            throw new PersonaFisicaException();
+        }
     }
     
     public Integer getEdad(){
@@ -58,14 +67,6 @@ public class Fisica extends Persona {
 
     public void setfNacimiento(Fecha fNacimiento) {
         this.fNacimiento = fNacimiento;
-    }
-
-    public TipoEstadoCivil getTec() {
-        return tec;
-    }
-
-    public void setTec(TipoEstadoCivil tec) {
-        this.tec = tec;
     }
 
 }

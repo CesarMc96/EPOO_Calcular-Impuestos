@@ -2,9 +2,13 @@
 package Modelo;
 
 import Enum.TipoDireccion;
+import Enum.TipoRegimen;
+import Excepciones.IntervalosFechaException;
+import Excepciones.RegimenException;
 import Objetos.Fecha;
 import Objetos.HashConjunto;
 import Objetos.RFC;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -16,22 +20,55 @@ public abstract class Persona {
     private Fecha fechaInscripcion;
     private Fecha fechaInicioOperaciones;
     private HashConjunto regimenes;
+
+    public Persona(HashSet<Direccion> direcciones, String telefono, RFC rfc, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, HashConjunto regimenes) throws IntervalosFechaException {
+        this.direcciones = direcciones;
+        this.telefono = telefono;
+        this.rfc = rfc;
+        this.fechaInscripcion = fechaInscripcion;
+        this.fechaInicioOperaciones = fechaInicioOperaciones;
+        this.regimenes = regimenes;
+        if (!valido()){
+            throw new IntervalosFechaException();
+        }
+    }
+    
+    public boolean valido(){
+        return fechaInscripcion.compareTo(fechaInicioOperaciones) == 0;
+    }
     
     public boolean AddDireccion(Direccion d){
         return direcciones.add(d);
     }
     
     public boolean isDireccion(TipoDireccion td){
-        return false;
+        return direcciones.stream().filter(obj -> obj.getTp() == td).count() > 0;
     }
 
     public Direccion getDireccion(TipoDireccion td){
-        return null;
+        Direccion direccionRetorno = null;
+        
+        for (Direccion direccion1 : direcciones) {
+             if (direccion1.getTp()== td ){
+                 direccionRetorno = direccion1;
+             }
+        }
+        return direccionRetorno;
+    }
+    
+    public void addRegimen(TipoRegimen tp) throws RegimenException{
+        if(!regimenes.add(tp)){
+            throw new RegimenException();
+        }
     }
     
     public List<Direccion> getDirecciones(){
-        return null;
+        return new ArrayList<>(direcciones);
     }
+    
+    public List<TipoRegimen> getRemimenes(){
+        return new ArrayList<>(regimenes);
+    } 
     
     public String getTelefono() {
         return telefono;

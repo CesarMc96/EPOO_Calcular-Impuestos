@@ -3,6 +3,7 @@ package Impuestos;
 
 import Enum.TipoDireccion;
 import Enum.TipoRegimen;
+import Excepciones.DireccionException;
 import Modelo.Direccion;
 import Objetos.Fecha;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.HashSet;
 
 public class Impuestos {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DireccionException {
         
         /*DIA 1*/
 //        System.out.println("Fechas-----------");
