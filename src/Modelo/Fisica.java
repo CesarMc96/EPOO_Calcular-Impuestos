@@ -4,7 +4,8 @@ package Modelo;
 import Enum.TipoEstadoCivil;
 import Objetos.Fecha;
 
-public class Fisica extends Persona{
+public class Fisica extends Persona {
+
     private String nombre;
     private String amaterno;
     private String apaterno;
@@ -18,13 +19,13 @@ public class Fisica extends Persona{
         this.fNacimiento = fNacimiento;
         this.tec = tec;
     }
+
+    public boolean valida() {
+        return fNacimiento.edad() >= 18;
+    }
     
-    private boolean valida(){
-        if (tp == TipoPersona.Fisica){
-            return RFC.matches("^[A-Z]{4}(\\d{6})((\\D|\\d){3})?$");
-        }else{
-            return RFC.matches("^[A-Z]{3}(\\d{6})((\\D|\\d){3})?$");
-        }
+    public Integer getEdad(){
+    return fNacimiento.edad();
     }
 
     public String getNombre() {
@@ -66,6 +67,5 @@ public class Fisica extends Persona{
     public void setTec(TipoEstadoCivil tec) {
         this.tec = tec;
     }
-    
-    
+
 }

@@ -5,7 +5,6 @@ import Enum.TipoDireccion;
 import Enum.TipoRegimen;
 import Modelo.Direccion;
 import Objetos.Fecha;
-import Objetos.Regimen;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -33,8 +32,7 @@ public class Impuestos {
         Fecha f1 = new Fecha();
         System.out.println(f);
         System.out.println(f1);
-        f1.edad(f);
-        System.out.println("");
+        System.out.println(f.edad());
         
         /*DIA 2*/
         System.out.println("Dias Inhabiles--------------");
@@ -64,10 +62,10 @@ public class Impuestos {
         
         
         /*DIA 3*/
-        /*
+        
         HashSet<TipoRegimen> regimenes = new HashSet<>();
-        //regimenes.add(Regimen.Cedular);
-        */
+        regimenes.add(TipoRegimen.Cedular);
+        
         
         Direccion direccion1 = new Direccion(TipoDireccion.Fiscal, "Reforma", "405", "1", "centro", "68100", "santa lucia");
         Direccion direccion2 = new Direccion(TipoDireccion.Fiscal, "Reforma", "405", "1", "centro", "68100", "santa lucia");
