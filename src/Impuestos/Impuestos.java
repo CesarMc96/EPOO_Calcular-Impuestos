@@ -5,6 +5,10 @@ import Enum.TipoDireccion;
 import Enum.TipoRegimen;
 import Excepciones.DireccionException;
 import Modelo.Direccion;
+import Modelo.Obligaciones.Cedular;
+import Modelo.Obligaciones.Ieps;
+import Modelo.Obligaciones.Incorporacion;
+import Modelo.Obligaciones.Obligacion;
 import Objetos.Fecha;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -80,6 +84,18 @@ public class Impuestos {
             System.out.println(direccione);
         }
         
+        ArrayList<Obligacion> arreglo = new ArrayList();
+        Obligacion ob = new Cedular();
+        
+        arreglo.add(ob);
+        arreglo.add(new Ieps());
+        arreglo.add(new Cedular());
+        arreglo.add(new Incorporacion());
+        
+        for(int i = 0; i < arreglo.size(); i++){
+            Obligacion obj = arreglo.get(i);
+            obj.metodoPrueba();
+        }
         
     }
     
