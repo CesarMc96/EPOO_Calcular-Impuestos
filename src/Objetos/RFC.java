@@ -25,7 +25,6 @@ public class RFC {
         }
     }
     
-    
     @Override
     public String toString(){
         return RFC;

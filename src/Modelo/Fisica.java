@@ -21,7 +21,7 @@ public class Fisica extends Persona {
         return resultado && fNacimiento.edad() >= 18;
     }
 
-    public Fisica(String nombre, String amaterno, String apaterno, Fecha fNacimiento, HashSet<Direccion> direcciones, String telefono, RFC rfc, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, HashConjunto regimenes) throws IntervalosFechaException, PersonaFisicaException {
+    public Fisica(String nombre, String apaterno, String amaterno, Fecha fNacimiento, HashSet<Direccion> direcciones, String telefono, RFC rfc, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, HashConjunto regimenes) throws IntervalosFechaException, PersonaFisicaException {
         super(direcciones, telefono, rfc, fechaInscripcion, fechaInicioOperaciones, regimenes);
         this.nombre = nombre;
         this.amaterno = amaterno;

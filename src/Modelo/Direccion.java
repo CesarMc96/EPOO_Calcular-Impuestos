@@ -76,6 +76,11 @@ public class Direccion {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "TipoDireccion: " + tp + " " + calle + " numero " + numExterior + " interior " + numInterior + " colonia " + colonia + " codigo postal " + codigoPostal + " municipio " + municipio;
+    }
+
     public TipoDireccion getTp() {
         return tp;
     }

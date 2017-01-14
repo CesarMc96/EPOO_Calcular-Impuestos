@@ -4,8 +4,18 @@ package Modelo.Obligaciones;
 public class Cedular implements Obligacion{
 
     @Override
-    public void metodoPrueba() {
-        System.out.println("Cedular");
+    public float calculoImpuestos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public float calculaRecargos() {
+        return (float) 2.0;
+    }
+
+    @Override
+    public float totalPagar() {
+        return (float) 1.0;
     }
     
 }

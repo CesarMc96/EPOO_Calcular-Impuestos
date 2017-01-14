@@ -1,5 +1,7 @@
 package Objetos;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Objects;
@@ -10,15 +12,15 @@ public class Fecha {
     private Integer mes;
     private Integer anio;
     private static HashSet<Fecha> diasInhabiles = new HashSet<>();
-    
-    public static void agregarDiaInhabil(Fecha f){
+
+    public static void agregarDiaInhabil(Fecha f) {
         diasInhabiles.add(f);
     }
 
-    public static boolean esDiaInhabil(Fecha f){
+    public static boolean esDiaInhabil(Fecha f) {
         return diasInhabiles.contains(f);
     }
-    
+
     public Fecha(Integer dia, Integer mes, Integer anio) {
         this.dia = dia;
         this.mes = mes;
@@ -35,7 +37,7 @@ public class Fecha {
 
     public int diasDelMes() {
         int diaAuxiliar = 0;
-        
+
         switch (mes) {
             case 1:
             case 3:
@@ -56,7 +58,7 @@ public class Fecha {
                 diaAuxiliar = anio % 4 == 0 ? 29 : 28;
                 break;
         }
-        
+
         return diaAuxiliar;
     }
 
@@ -64,7 +66,6 @@ public class Fecha {
 
         if ((anio >= 1900) && (anio <= 2100)) {
             if ((mes > 0) && (mes < 13)) {
-                
 
                 if ((dia >= 1) && (dia < diasDelMes())) {
                     return true;
@@ -100,24 +101,32 @@ public class Fecha {
         }
     }
 
-    public void aumentarDiaInhabil(){
-        do{
+    public void aumentarDiaInhabil() {
+        do {
             aumentar();
         } while (esDiaInhabil(this));
     }
-    
-    //corregir
-    public void aumentarDiaInhabil(String ...Ds){
+
+    public void aumentarDiaInhabil(DayOfWeek... dias) {
         boolean bandera = false;
-        
-        do{
+
+        do {
+            bandera = false;
             aumentar();
-            for (int i = 0; i < Ds.length; i++) {
-                
+            for (int i = 0; i < dias.length; i++) {
+                if (dias[i] == this.diaSemana()) {
+                    bandera = true;
+                }
             }
-        } while (esDiaInhabil(this));
+        } while (esDiaInhabil(this) || bandera);
+
     }
-        
+
+    public DayOfWeek diaSemana() {
+        LocalDate dateTemporal = LocalDate.of(anio, mes, dia);
+        return dateTemporal.getDayOfWeek();
+    }
+
     public void disminuir() {
         dia--;
 
@@ -144,21 +153,21 @@ public class Fecha {
         }
     }
 
-    public int compareTo(Fecha f){
+    public int compareTo(Fecha f) {
         int resultado = this.anio - f.anio;
-        if(resultado == 0){
+        if (resultado == 0) {
             resultado = this.mes - f.mes;
-            if(resultado == 0){
+            if (resultado == 0) {
                 resultado = this.dia - f.dia;
             }
         }
         return resultado;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Fecha){
-            Fecha f = (Fecha)obj;
+        if (obj instanceof Fecha) {
+            Fecha f = (Fecha) obj;
             return this.compareTo(f) == 0;
         }
         return false;
@@ -172,8 +181,8 @@ public class Fecha {
         hash = 97 * hash + Objects.hashCode(this.anio);
         return hash;
     }
-    
-    public String diaSemana() {
+
+    public String diaSemana1() {
         int a = 0, b = 0, c = 0, d = 0, e, na = 0;
 
         if (anio >= 1900 && anio <= 1999) {
@@ -298,11 +307,11 @@ public class Fecha {
 
     public Integer edad() {
         Fecha fa = new Fecha();
-        
+
         int edad = fa.getAnio() - this.getAnio();
-        if(this.getMes() > fa.getMes()){
+        if (this.getMes() > fa.getMes()) {
             edad = edad - 1;
-        } else if(this.getMes() == fa.getMes()  && this.getDia() > fa.getDia()){
+        } else if (this.getMes() == fa.getMes() && this.getDia() > fa.getDia()) {
             edad = edad - 1;
         }
 

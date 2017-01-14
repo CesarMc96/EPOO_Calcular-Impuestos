@@ -38,12 +38,17 @@ public enum TipoPeriodo {
         this.mesFinal = mesFinal;
     }
     
-    public TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
-        TipoPeriodo resutado = null;
+    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
+        TipoPeriodo resultado = null;
         TipoPeriodo tp[] = TipoPeriodo.values();
         for(TipoPeriodo tipoperiodo : tp){
-            if()
+            if(tipoperiodo.getPeriodicidad() == p){
+                if(tipoperiodo.getMesInicial() <= f.getMes() && tipoperiodo.getMesFinal() >= f.getMes()){
+                    return resultado = tipoperiodo;
+                }
+            }
         }
+        return resultado;
     }
 
     public Periodicidad getPeriodicidad() {
