@@ -1,14 +1,14 @@
 
 package Objetos;
 
-import Enum.Periodicidad;
 import Enum.TipoPeriodo;
+import java.time.DayOfWeek;
 
 public class Periodo {
     
-    private TipoPeriodo tipoPeriodo;
+    private final TipoPeriodo tipoPeriodo;
     private Fecha fLimitedePago;
-    private Integer anio;
+    private final Integer anio;
 
     public Periodo(TipoPeriodo tipoPeriodo, Integer anio) {
         this.tipoPeriodo = tipoPeriodo;
@@ -23,7 +23,7 @@ public class Periodo {
     private Fecha fechaCero(){
         tipoPeriodo.getMesFinal();
         Fecha f = new Fecha(17,tipoPeriodo.getMesFinal() + 1, anio);
-        f.aumentarDiaInhabil(dias semana);
+        f.aumentarDiaInhabil(DayOfWeek.FRIDAY);
         return f;
     }
 }

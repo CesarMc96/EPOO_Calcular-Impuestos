@@ -1,6 +1,7 @@
 
 package Impuestos;
 
+import Enum.CedularTipos;
 import Enum.Periodicidad;
 import Enum.TipoDireccion;
 import Enum.TipoPeriodo;
@@ -63,7 +64,7 @@ public class Impuestos {
         HashSet<Direccion> direcciones = new HashSet<>();
         direcciones.add(d);
         
-        Fisica tf = new Fisica("Cesar Alejandro", "Montano", "Cortes", new Fecha(20,11, 1996), direcciones, "9511787630", new RFC("CUPU800825569", TipoPersona.Fisica), new Fecha(1,1,2017), new Fecha(10,1,2017), );
+        //Fisica tf = new Fisica("Cesar Alejandro", "Montano", "Cortes", new Fecha(20,11, 1996), direcciones, "9511787630", new RFC("CUPU800825569", TipoPersona.Fisica), new Fecha(1,1,2017), new Fecha(10,1,2017), );
 //        
 //        //HashSet es ArrayList pero no permite usar repetidos
 //        HashSet<Fecha> fechas = new HashSet<>();
@@ -114,8 +115,12 @@ public class Impuestos {
 //        
 //        for(int i = 0; i < arreglo.size(); i++){
 //            Obligacion obj = arreglo.get(i);
-//            obj.metodoPrueba();
 //        }
+//        
+//        System.out.println(ob.calculoImpuestos());
+        
+        Obligacion o = new Cedular(CedularTipos.LocalComercial, 500000, 350000);
+        System.out.println(o.calculoImpuestos());
         
     }
     

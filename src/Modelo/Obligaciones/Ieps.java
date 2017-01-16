@@ -4,10 +4,20 @@ package Modelo.Obligaciones;
 public class Ieps implements Obligacion{
 
     @Override
-    public void metodoPrueba() {
-        System.out.println("Ieps");
+    public float calculoImpuestos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public float calculaRecargos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public float totalPagar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
 

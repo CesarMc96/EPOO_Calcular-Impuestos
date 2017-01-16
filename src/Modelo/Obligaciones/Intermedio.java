@@ -16,6 +16,14 @@ public class Intermedio implements Obligacion{
 
     @Override
     public float totalPagar() {
+        return ingresoTotal() - dineroGastado();
+    }
+
+    private float ingresoTotal() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private float dineroGastado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
