@@ -27,11 +27,12 @@ public abstract class Persona {
         this.telefono = telefono;
         this.fechaInscripcion = fechaInscripcion;
         this.fechaInicioOperaciones = fechaInicioOperaciones;
-        
+        direcciones = new HashSet<>();
+        regimenes = new HashConjunto();
     }
     
     public boolean valido(){
-        return fechaInscripcion.compareTo(fechaInicioOperaciones) == 0;
+        return fechaInscripcion.compareTo(fechaInicioOperaciones) <= 0;
     }
     
     public boolean AddDireccion(Direccion d){

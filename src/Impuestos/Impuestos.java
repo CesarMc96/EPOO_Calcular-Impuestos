@@ -6,26 +6,30 @@ import Enum.Periodicidad;
 import Enum.TipoDireccion;
 import Enum.TipoPeriodo;
 import Enum.TipoPersona;
+import static Enum.TipoPersona.Moral;
 import Enum.TipoRegimen;
 import Excepciones.DireccionException;
 import Excepciones.IntervalosFechaException;
 import Excepciones.PersonaFisicaException;
 import Excepciones.RFCException;
+import Excepciones.RegimenException;
 import Modelo.Direccion;
 import Modelo.Fisica;
+import Modelo.Moral;
 import Modelo.Obligaciones.Cedular;
 import Modelo.Obligaciones.Ieps;
 import Modelo.Obligaciones.Incorporacion;
 import Modelo.Obligaciones.Obligacion;
 import Objetos.Fecha;
 import Objetos.HashConjunto;
+import Objetos.Periodo;
 import Objetos.RFC;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Impuestos {
 
-    public static void main(String[] args) throws DireccionException, RFCException, IntervalosFechaException, PersonaFisicaException {
+    public static void main(String[] args) throws DireccionException, RFCException, IntervalosFechaException, PersonaFisicaException, RegimenException {
         
         /*DIA 1*/
         System.out.println("Fechas-----------");
@@ -118,9 +122,66 @@ public class Impuestos {
 //        }
 //        
 //        System.out.println(ob.calculoImpuestos());
+        Fisica fisica = null;
+        Moral moral = null;
+        Fisica juan = null;
         
+        try {
+            RFC rfc = new RFC("RIOD810904815", TipoPersona.Fisica);        
+            fisica = new Fisica(rfc, "Daniel Karim", "Ricardez", "Ortiz", new Fecha(4,9,1981), "9515693556", new Fecha(15,12,2003), new Fecha(15, 12, 2003));
 
+            juan = new Fisica(new RFC("GABJ9403189IP", TipoPersona.Fisica), "Juan Antonio", "Gabriel", "Bolaños", new Fecha(18,3,1994), "9512515114", new Fecha(15, 8, 2016), new Fecha(1, 9, 2016));
+            
+            moral = new Moral(new RFC("AAA900912", TipoPersona.Moral), "Provedora Escolar", "S.C. de R.L.", fisica, "5130223", new Fecha(1,1,2000), new Fecha(1, 1, 2000), new Fecha(1, 1, 2000));
+        } catch (IntervalosFechaException ex) {
+            ex.printStackTrace();
+        } catch (PersonaFisicaException ex) {
+            ex.printStackTrace();
+        } catch (RFCException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
         
+        Direccion direccionFisica = new Direccion(TipoDireccion.Fisica, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
+        Direccion direccionFiscal = new Direccion(TipoDireccion.Fiscal, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
+        
+        fisica.AddDireccion(direccionFisica);
+        fisica.AddDireccion(direccionFiscal);
+        
+        moral.AddDireccion(direccionFiscal);
+        moral.AddDireccion(direccionFisica);
+        
+        
+        juan.AddDireccion(new Direccion(TipoDireccion.Fiscal, "Cui", "12", null, "Del Valle", "68150", "Xoxo"));
+        
+        try {
+            fisica.addRegimen(TipoRegimen.Incorporacion);
+            fisica.addRegimen(TipoRegimen.Ieps);
+            
+            moral.addRegimen(TipoRegimen.Ieps);
+            
+            juan.addRegimen(TipoRegimen.Intermedio);
+            
+            //fisica.addRegimen(Regimen.INTERMEDIO);
+        } catch (RegimenException ex) {
+            ex.printStackTrace();
+        }
+        
+        juan.actualizarObligaciones();
+        
+        
+        TipoPeriodo tp = TipoPeriodo.getPeriodo(Periodicidad.Trimestral, new Fecha(1,1,2016));
+
+        Periodo inicial = new Periodo(tp, 2016);
+ 
+        System.out.println(inicial);
+        System.out.println(inicial.next());
+        System.out.println(inicial.next().next());
+        System.out.println(inicial.next().next().next());
+        
+        System.out.println(inicial.next().next().next().next());
+
     }
     
 }

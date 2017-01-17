@@ -13,7 +13,7 @@ public class Moral extends Persona{
     private Fisica representanteLegal;
     private Fecha fechaCreacion;
 
-    public Moral(String razonSocial, String tipoSociedad, Fisica representanteLegal, Fecha fechaCreacion, RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones) throws IntervalosFechaException {
+    public Moral(RFC rfc, String razonSocial, String tipoSociedad, Fisica representanteLegal, String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, Fecha fechaCreacion) throws IntervalosFechaException {
         super(rfc, telefono, fechaInscripcion, fechaInicioOperaciones);
         this.razonSocial = razonSocial;
         this.tipoSociedad = tipoSociedad;

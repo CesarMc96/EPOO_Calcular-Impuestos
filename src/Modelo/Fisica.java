@@ -15,12 +15,6 @@ public class Fisica extends Persona {
     private String apaterno;
     private Fecha fNacimiento;
 
-    @Override
-    public boolean valido() {
-        boolean resultado = super.valido();
-        return resultado && fNacimiento.edad() >= 18;
-    }
-
     public Fisica(RFC rfc, String nombre, String paterno, String materno, Fecha fechaNacimiento, String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones) throws IntervalosFechaException, PersonaFisicaException {
         super(rfc, telefono, fechaInscripcion, fechaInicioOperaciones);
         this.nombre = nombre;
@@ -31,6 +25,13 @@ public class Fisica extends Persona {
         if (!valido()){
             throw new PersonaFisicaException();
         }
+    }
+    
+    
+    @Override
+    public boolean valido() {
+        boolean resultado = super.valido();
+        return resultado && fNacimiento.edad() >= 18;
     }
     
     public Integer getEdad(){
