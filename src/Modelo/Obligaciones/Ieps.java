@@ -1,7 +1,14 @@
 
 package Modelo.Obligaciones;
 
-public class Ieps implements Obligacion{
+import Enum.TipoRegimen;
+import Objetos.Periodo;
+
+public class Ieps extends Impuesto{
+
+    public Ieps(Periodo periodo) {
+        super(periodo, TipoRegimen.Ieps);
+    }
 
     @Override
     public float calculoImpuestos() {

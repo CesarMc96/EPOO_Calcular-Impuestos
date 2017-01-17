@@ -8,6 +8,8 @@ import Enum.TipoPeriodo;
 import Enum.TipoPersona;
 import Enum.TipoRegimen;
 import Excepciones.DireccionException;
+import Excepciones.IntervalosFechaException;
+import Excepciones.PersonaFisicaException;
 import Excepciones.RFCException;
 import Modelo.Direccion;
 import Modelo.Fisica;
@@ -23,7 +25,7 @@ import java.util.HashSet;
 
 public class Impuestos {
 
-    public static void main(String[] args) throws DireccionException, RFCException {
+    public static void main(String[] args) throws DireccionException, RFCException, IntervalosFechaException, PersonaFisicaException {
         
         /*DIA 1*/
         System.out.println("Fechas-----------");
@@ -61,10 +63,8 @@ public class Impuestos {
         Direccion d = new Direccion(TipoDireccion.Fisica, "Calle seis de enero", "133", "A", "Aquiles Serdad", "71220", "Santa Lucia del Camino");
         System.out.println(d);
         
-        HashSet<Direccion> direcciones = new HashSet<>();
-        direcciones.add(d);
-        
-        //Fisica tf = new Fisica("Cesar Alejandro", "Montano", "Cortes", new Fecha(20,11, 1996), direcciones, "9511787630", new RFC("CUPU800825569", TipoPersona.Fisica), new Fecha(1,1,2017), new Fecha(10,1,2017), );
+        Fisica FCesar = new Fisica(new RFC("CUPU800825569", TipoPersona.Fisica), "César Alejandro ", "Montaño ", "Cortés", new Fecha(20,11,1996), "9511787630", new Fecha(15,8,2016), new Fecha(15,8,2016));
+        //tf.toString();
 //        
 //        //HashSet es ArrayList pero no permite usar repetidos
 //        HashSet<Fecha> fechas = new HashSet<>();
@@ -119,8 +119,7 @@ public class Impuestos {
 //        
 //        System.out.println(ob.calculoImpuestos());
         
-        Obligacion o = new Cedular(CedularTipos.LocalComercial, 500000, 350000);
-        System.out.println(o.calculoImpuestos());
+
         
     }
     

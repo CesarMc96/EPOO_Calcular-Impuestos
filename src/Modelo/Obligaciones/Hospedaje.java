@@ -1,7 +1,14 @@
 
 package Modelo.Obligaciones;
 
-public class Hospedaje implements Obligacion{
+import Enum.TipoRegimen;
+import Objetos.Periodo;
+
+public class Hospedaje extends Impuesto{
+
+    public Hospedaje(Periodo periodo) {
+        super(periodo, TipoRegimen.Hospedaje);
+    }
 
     @Override
     public float calculoImpuestos() {

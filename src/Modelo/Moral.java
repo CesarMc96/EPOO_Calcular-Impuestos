@@ -13,13 +13,14 @@ public class Moral extends Persona{
     private Fisica representanteLegal;
     private Fecha fechaCreacion;
 
-    public Moral(String razonSocial, String tipoSociedad, Fisica representanteLegal, Fecha fechaCreacion, HashSet<Direccion> direcciones, String telefono, RFC rfc, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, HashConjunto regimenes) throws IntervalosFechaException {
-        super(direcciones, telefono, rfc, fechaInscripcion, fechaInicioOperaciones, regimenes);
+    public Moral(String razonSocial, String tipoSociedad, Fisica representanteLegal, Fecha fechaCreacion, RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones) throws IntervalosFechaException {
+        super(rfc, telefono, fechaInscripcion, fechaInicioOperaciones);
         this.razonSocial = razonSocial;
         this.tipoSociedad = tipoSociedad;
         this.representanteLegal = representanteLegal;
         this.fechaCreacion = fechaCreacion;
     }
+
 
     public String getRazonSocial() {
         return razonSocial;

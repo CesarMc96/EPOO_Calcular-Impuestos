@@ -5,6 +5,7 @@ import Enum.TipoDireccion;
 import Enum.TipoRegimen;
 import Excepciones.IntervalosFechaException;
 import Excepciones.RegimenException;
+import Modelo.Obligaciones.Obligacion;
 import Objetos.Fecha;
 import Objetos.HashConjunto;
 import Objetos.RFC;
@@ -21,16 +22,12 @@ public abstract class Persona {
     private Fecha fechaInicioOperaciones;
     private HashConjunto regimenes;
 
-    public Persona(HashSet<Direccion> direcciones, String telefono, RFC rfc, Fecha fechaInscripcion, Fecha fechaInicioOperaciones, HashConjunto regimenes) throws IntervalosFechaException {
-        this.direcciones = direcciones;
-        this.telefono = telefono;
+    public Persona(RFC rfc, String telefono, Fecha fechaInscripcion, Fecha fechaInicioOperaciones) throws IntervalosFechaException {
         this.rfc = rfc;
+        this.telefono = telefono;
         this.fechaInscripcion = fechaInscripcion;
         this.fechaInicioOperaciones = fechaInicioOperaciones;
-        this.regimenes = regimenes;
-        if (!valido()){
-            throw new IntervalosFechaException();
-        }
+        
     }
     
     public boolean valido(){
@@ -54,6 +51,12 @@ public abstract class Persona {
              }
         }
         return direccionRetorno;
+    }
+    
+    public void actualizarObligaciones(){
+        for(TipoRegimen regimen: regimenes){
+            
+        }
     }
     
     public void addRegimen(TipoRegimen tp) throws RegimenException{

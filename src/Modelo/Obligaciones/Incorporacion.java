@@ -1,12 +1,13 @@
 
 package Modelo.Obligaciones;
 
-public class Incorporacion implements Obligacion{
+import Enum.TipoRegimen;
+import Objetos.Periodo;
 
+public class Incorporacion extends Impuesto {
 
-    @Override
-    public float calculoImpuestos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Incorporacion(Periodo periodo) {
+        super(periodo, TipoRegimen.Incorporacion);
     }
 
     @Override
