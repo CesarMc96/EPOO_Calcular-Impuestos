@@ -6,9 +6,33 @@ import java.time.DayOfWeek;
 
 public class Periodo {
     
-    private final TipoPeriodo tipoPeriodo;
+    private TipoPeriodo tipoPeriodo;
     private Fecha fLimitedePago;
-    private final Integer anio;
+    private Integer anio;
+
+    public TipoPeriodo getTipoPeriodo() {
+        return tipoPeriodo;
+    }
+
+    public void setTipoPeriodo(TipoPeriodo tipoPeriodo) {
+        this.tipoPeriodo = tipoPeriodo;
+    }
+
+    public Fecha getfLimitedePago() {
+        return fLimitedePago;
+    }
+
+    public void setfLimitedePago(Fecha fLimitedePago) {
+        this.fLimitedePago = fLimitedePago;
+    }
+
+    public Integer getAnio() {
+        return anio;
+    }
+
+    public void setAnio(Integer anio) {
+        this.anio = anio;
+    }
 
     public Periodo(TipoPeriodo tipoPeriodo, Integer anio) {
         this.tipoPeriodo = tipoPeriodo;

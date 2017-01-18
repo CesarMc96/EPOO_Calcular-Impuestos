@@ -6,26 +6,45 @@ import Objetos.Periodo;
 
 public class Ieps extends Impuesto{
 
+    private Float litrosMagna;
+    private Float litrosPremium;
+    private Float litrosDisel;
+    
     public Ieps(Periodo periodo) {
         super(periodo, TipoRegimen.Ieps);
     }
 
     @Override
-    public float calculoImpuestos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Float totalPagar() {
+        Float magna = litrosMagna * (float)15.99 * (float)0.20;
+        Float premuin = litrosPremium * (float)17.79 * (float)0.20;
+        Float disel = litrosDisel * (float)17.05 * (float)0.20;
+        return magna + premuin + disel;
     }
 
-    @Override
-    public float calculaRecargos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Float getLitrosMagna() {
+        return litrosMagna;
     }
 
-    @Override
-    public float totalPagar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setLitrosMagna(Float litrosMagna) {
+        this.litrosMagna = litrosMagna;
+    }
+
+    public Float getLitrosPremium() {
+        return litrosPremium;
+    }
+
+    public void setLitrosPremium(Float litrosPremium) {
+        this.litrosPremium = litrosPremium;
+    }
+
+    public Float getLitrosDisel() {
+        return litrosDisel;
+    }
+
+    public void setLitrosDisel(Float litrosDisel) {
+        this.litrosDisel = litrosDisel;
     }
 
     
 }
-
-//litros de gasolina vendiste, cada litro de gasolina se le multiplica el precio de la gasolina y se calcula despues el 20% del ieos

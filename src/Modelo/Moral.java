@@ -3,9 +3,7 @@ package Modelo;
 
 import Excepciones.IntervalosFechaException;
 import Objetos.Fecha;
-import Objetos.HashConjunto;
 import Objetos.RFC;
-import java.util.HashSet;
 
 public class Moral extends Persona{
     private String razonSocial;

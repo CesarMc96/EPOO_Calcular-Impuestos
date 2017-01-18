@@ -2,20 +2,20 @@
 package Enum;
 
 public enum TipoRegimen {
-    Cedular(2),
-    Intermedio(1),
-    Ieps(4),
-    Hospedaje(3),
-    Incorporacion(1);
+    Cedular(Periodicidad.Bimestral),
+    Intermedio(Periodicidad.Mensual),
+    Ieps(Periodicidad.Mensual),
+    Hospedaje(Periodicidad.Trimestral),
+    Incorporacion(Periodicidad.Bimestral);
     
-    private TipoRegimen(int parametro){
-        numerito = parametro;
+    private TipoRegimen(Periodicidad periodicidad){
+        this.periodicidad = periodicidad;
     }
     
-    private final int numerito;
+    private final Periodicidad periodicidad;
 
-    public int getNumerito() {
-        return numerito;
+    public Periodicidad getPeriodicidad() {
+        return periodicidad;
     }
     
     

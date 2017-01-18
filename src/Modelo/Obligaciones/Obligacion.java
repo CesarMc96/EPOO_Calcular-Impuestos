@@ -3,10 +3,10 @@ package Modelo.Obligaciones;
 
 public interface Obligacion {
     
-    public float calculoImpuestos();
+    public Float calculoImpuestos();
     
-    public float calculaRecargos();
+    public Float calculaRecargos();
     
-    public float totalPagar();
+    public Float totalPagar();
     
 }

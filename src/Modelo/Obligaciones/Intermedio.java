@@ -1,22 +1,12 @@
 
 package Modelo.Obligaciones;
 
-public class Intermedio implements Obligacion{
+import Enum.TipoRegimen;
+import Objetos.Periodo;
+
+public class Intermedio extends General {
     
-    @Override
-    public float calculoImpuestos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public float calculaRecargos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public float totalPagar() {
-        //return ingresoTotal() - dineroGastado();
-        return (float) 0.00;
+    public Intermedio(Periodo periodo) {
+        super(periodo, TipoRegimen.Intermedio);
     }
 }
-// total de ingreso menos el total gastado * 0.35

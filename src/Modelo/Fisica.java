@@ -4,9 +4,7 @@ package Modelo;
 import Excepciones.IntervalosFechaException;
 import Excepciones.PersonaFisicaException;
 import Objetos.Fecha;
-import Objetos.HashConjunto;
 import Objetos.RFC;
-import java.util.HashSet;
 
 public class Fisica extends Persona {
 
