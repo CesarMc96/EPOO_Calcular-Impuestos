@@ -1,7 +1,9 @@
 
 package Enum;
 
-public enum TipoPersona {
+import java.io.Serializable;
+
+public enum TipoPersona implements Serializable {
     Fisica,
     Moral
 }

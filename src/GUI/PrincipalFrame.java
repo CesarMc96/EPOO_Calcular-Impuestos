@@ -1,6 +1,9 @@
 
 package GUI;
 
+import Controller.BaseDatos;
+import GUI.Listener.PersonaDialogListener;
+import Modelo.Persona;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.TextField;
@@ -31,9 +34,11 @@ public class PrincipalFrame extends JFrame {
     private final JButton btnFisica;
     private final JButton btnMoral;
     private final ImageIcon FisicaPersona;
-    private Icon FisicaPersonaEscala;
+    private final Icon FisicaPersonaEscala;
     private final ImageIcon MoralPersona;
     private final ImageIcon MoralPersonaEscala;
+    private BaseDatos datos;
+    private final FisicaDialog dlgFisica;
     
     public PrincipalFrame() {
         
@@ -137,6 +142,12 @@ public class PrincipalFrame extends JFrame {
         
         pnlTrabajo = new JPanel();
         pnlTrabajo.setBackground(Color.white);
+        
+        dlgFisica = new FisicaDialog(this);
+        dlgFisica.setListener((Persona persona) -> {
+            System.out.println(persona.getRfc());
+            datos.agregar(persona);
+        });
         
         setJMenuBar(this.menu);
         super.add(menuHerramientas, BorderLayout.PAGE_START);

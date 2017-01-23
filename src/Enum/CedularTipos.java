@@ -1,7 +1,9 @@
 
 package Enum;
 
-public enum CedularTipos {
+import java.io.Serializable;
+
+public enum CedularTipos implements Serializable{
     CasaHabitacion,
     LocalComercial
 }

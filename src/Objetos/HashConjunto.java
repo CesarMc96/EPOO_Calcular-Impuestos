@@ -2,9 +2,10 @@
 package Objetos;
 
 import Enum.TipoRegimen;
+import java.io.Serializable;
 import java.util.HashSet;
 
-public class HashConjunto extends HashSet<TipoRegimen>{
+public class HashConjunto extends HashSet<TipoRegimen> implements Serializable {
 
     @Override
     public boolean add(TipoRegimen rgm) {

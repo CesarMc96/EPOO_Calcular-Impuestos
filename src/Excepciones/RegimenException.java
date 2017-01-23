@@ -1,7 +1,9 @@
 
 package Excepciones;
 
-public class RegimenException extends Exception {
+import java.io.Serializable;
+
+public class RegimenException extends Exception implements Serializable{
 
     public RegimenException() {
     }

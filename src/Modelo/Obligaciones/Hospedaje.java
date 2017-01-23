@@ -3,8 +3,9 @@ package Modelo.Obligaciones;
 
 import Enum.TipoRegimen;
 import Objetos.Periodo;
+import java.io.Serializable;
 
-public class Hospedaje extends General{
+public class Hospedaje extends General implements Serializable{
 
     public Hospedaje(Periodo periodo) {
         super(periodo, TipoRegimen.Hospedaje);

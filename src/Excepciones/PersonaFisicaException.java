@@ -1,7 +1,9 @@
 
 package Excepciones;
 
-public class PersonaFisicaException extends Exception {
+import java.io.Serializable;
+
+public class PersonaFisicaException extends Exception implements Serializable{
 
     public PersonaFisicaException() {
     }

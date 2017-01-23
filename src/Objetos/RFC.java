@@ -3,8 +3,9 @@ package Objetos;
 
 import Enum.TipoPersona;
 import Excepciones.RFCException;
+import java.io.Serializable;
 
-public class RFC {
+public class RFC implements Serializable {
     
     private String RFC;
     private final TipoPersona tp;

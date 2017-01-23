@@ -2,9 +2,10 @@
 package Objetos;
 
 import Enum.TipoPeriodo;
+import java.io.Serializable;
 import java.time.DayOfWeek;
 
-public class Periodo {
+public class Periodo implements Serializable {
     
     private TipoPeriodo tipoPeriodo;
     private Fecha fLimitedePago;

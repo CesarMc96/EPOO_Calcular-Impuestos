@@ -1,7 +1,9 @@
 
 package Enum;
 
-public enum TipoRegimen {
+import java.io.Serializable;
+
+public enum TipoRegimen implements Serializable {
     Cedular(Periodicidad.Bimestral),
     Intermedio(Periodicidad.Mensual),
     Ieps(Periodicidad.Mensual),

@@ -1,7 +1,9 @@
 
 package Enum;
 
-public enum TipoDireccion {
+import java.io.Serializable;
+
+public enum TipoDireccion implements Serializable {
     Fisica,
     Fiscal,
     Sucursal

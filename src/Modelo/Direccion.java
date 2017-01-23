@@ -3,9 +3,10 @@ package Modelo;
 
 import Enum.TipoDireccion;
 import Excepciones.DireccionException;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Direccion {
+public class Direccion implements Serializable{
     private TipoDireccion tp;
     private String calle;
     private String numExterior;

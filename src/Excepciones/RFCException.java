@@ -1,7 +1,9 @@
 
 package Excepciones;
 
-public class RFCException extends Exception{
+import java.io.Serializable;
+
+public class RFCException extends Exception implements Serializable{
     
     public RFCException(){
         

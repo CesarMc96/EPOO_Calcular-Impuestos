@@ -5,8 +5,9 @@ import Excepciones.IntervalosFechaException;
 import Excepciones.PersonaFisicaException;
 import Objetos.Fecha;
 import Objetos.RFC;
+import java.io.Serializable;
 
-public class Fisica extends Persona {
+public class Fisica extends Persona implements Serializable{
 
     private String nombre;
     private String amaterno;

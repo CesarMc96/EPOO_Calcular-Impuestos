@@ -1,7 +1,9 @@
 
 package Excepciones;
 
-public class DireccionException extends Exception {
+import java.io.Serializable;
+
+public class DireccionException extends Exception implements Serializable {
 
     private String mensaje;
 

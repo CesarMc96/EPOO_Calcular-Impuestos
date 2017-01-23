@@ -1,12 +1,13 @@
 package Objetos;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class Fecha {
+public class Fecha implements Serializable {
 
     private Integer dia;
     private Integer mes;

@@ -3,8 +3,9 @@ package Modelo.Obligaciones;
 
 import Enum.TipoRegimen;
 import Objetos.Periodo;
+import java.io.Serializable;
 
-public class Cedular extends Impuesto{
+public class Cedular extends Impuesto implements Serializable{
 
     private Float totalCasaHabitacion;
     private Float totalLocalComercial;

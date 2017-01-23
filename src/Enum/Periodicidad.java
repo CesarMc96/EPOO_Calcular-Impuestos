@@ -1,7 +1,9 @@
 
 package Enum;
 
-public enum Periodicidad {
+import java.io.Serializable;
+
+public enum Periodicidad implements Serializable {
     Mensual,
     Bimestral,
     Trimestral

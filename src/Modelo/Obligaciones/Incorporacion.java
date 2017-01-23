@@ -3,8 +3,9 @@ package Modelo.Obligaciones;
 
 import Enum.TipoRegimen;
 import Objetos.Periodo;
+import java.io.Serializable;
 
-public class Incorporacion extends Impuesto {
+public class Incorporacion extends Impuesto implements Serializable {
     
     private Float ingresosBimestrales;
 

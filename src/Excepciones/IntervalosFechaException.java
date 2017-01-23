@@ -1,7 +1,9 @@
 
 package Excepciones;
 
-public class IntervalosFechaException extends Exception {
+import java.io.Serializable;
+
+public class IntervalosFechaException extends Exception implements Serializable {
 
     public IntervalosFechaException() {
     }

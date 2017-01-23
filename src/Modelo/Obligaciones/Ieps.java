@@ -3,8 +3,9 @@ package Modelo.Obligaciones;
 
 import Enum.TipoRegimen;
 import Objetos.Periodo;
+import java.io.Serializable;
 
-public class Ieps extends Impuesto{
+public class Ieps extends Impuesto implements Serializable{
 
     private Float litrosMagna;
     private Float litrosPremium;

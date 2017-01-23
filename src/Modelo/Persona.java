@@ -17,11 +17,12 @@ import Objetos.Fecha;
 import Objetos.HashConjunto;
 import Objetos.Periodo;
 import Objetos.RFC;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     
     private final HashSet<Direccion> direcciones;
     private String telefono;

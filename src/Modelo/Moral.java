@@ -4,8 +4,9 @@ package Modelo;
 import Excepciones.IntervalosFechaException;
 import Objetos.Fecha;
 import Objetos.RFC;
+import java.io.Serializable;
 
-public class Moral extends Persona{
+public class Moral extends Persona implements Serializable{
     private String razonSocial;
     private String tipoSociedad;
     private Fisica representanteLegal;

@@ -2,8 +2,9 @@
 package Enum;
 
 import Objetos.Fecha;
+import java.io.Serializable;
 
-public enum TipoPeriodo {
+public enum TipoPeriodo implements Serializable {
     
     Enero(Periodicidad.Mensual,1,1), 
     Febrero(Periodicidad.Mensual,2,2),
