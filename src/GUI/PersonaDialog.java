@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.BaseDatos;
 import Excepciones.IntervalosFechaException;
 import Excepciones.PersonaFisicaException;
 import Excepciones.RFCException;
@@ -10,6 +11,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -53,7 +59,8 @@ public abstract class PersonaDialog extends JDialog {
     private final JPanel pnlCentroAbajoAbajoAbajo;
     private final JPanel pnla;
     JPanel pnlCentroArriba;
-    private PersonaDialogListener listener;
+    private BaseDatos bd;
+    private ArrayList<Persona> Usuarios;
 
     public PersonaDialog(Frame frame) {
         super(frame, true);
@@ -147,8 +154,17 @@ public abstract class PersonaDialog extends JDialog {
         btnAceptar.addActionListener((ActionEvent e) -> {
             try {
                 Persona persona = crearObjeto();
-                listener.aceptarButtonClick(persona);
+                
+                Usuarios = BaseDatos.cargarUsuarios();
+                Usuarios.add(persona);
+                
+                BaseDatos.escribirUsuarios(Usuarios);
+                System.out.println(Usuarios);
                 setVisible(false);
+                
+                DireccionDialog u = new DireccionDialog(this);
+                u.setVisible(true);
+                
             } catch (IntervalosFechaException ex) {
                 JOptionPane.showMessageDialog(frame,
                         "La fecha de inscripcion debe ser menor al inicio de operaciones",
@@ -164,13 +180,20 @@ public abstract class PersonaDialog extends JDialog {
                         "RFC mal escrito",
                         "",
                         JOptionPane.WARNING_MESSAGE);
-            }
+            } catch (IOException ex) {
+                Logger.getLogger(PersonaDialog.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(PersonaDialog.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            
+            
+            
         });
 
         btnCancelar.addActionListener((ActionEvent e) -> {
             int n = JOptionPane.showConfirmDialog(
                     frame,
-                    "¿Quieres cancelar camnbios?",
+                    "¿Quieres cancelar cambios?",
                     "",
                     JOptionPane.YES_NO_OPTION);
             if (n == JOptionPane.YES_OPTION){
@@ -344,8 +367,4 @@ public abstract class PersonaDialog extends JDialog {
         return mes;
     }
     
-    public void setListener(PersonaDialogListener listener) {
-        this.listener = listener;
-    }
-
 }

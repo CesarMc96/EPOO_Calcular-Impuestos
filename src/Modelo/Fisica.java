@@ -26,7 +26,6 @@ public class Fisica extends Persona implements Serializable{
         }
     }
     
-    
     @Override
     public boolean valido() {
         boolean resultado = super.valido();
@@ -69,4 +68,11 @@ public class Fisica extends Persona implements Serializable{
         this.fNacimiento = fNacimiento;
     }
 
+    @Override
+    public String toString() {
+        return "Fisica{" + "nombre=" + nombre + ", amaterno=" + amaterno + ", apaterno=" + apaterno + ", fNacimiento=" + fNacimiento + '}';
+    }
+
+    
+    
 }

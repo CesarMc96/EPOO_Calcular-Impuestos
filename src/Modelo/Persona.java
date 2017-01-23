@@ -155,6 +155,12 @@ public abstract class Persona implements Serializable{
     public void setFechaInicioOperaciones(Fecha fechaInicioOperaciones) {
         this.fechaInicioOperaciones = fechaInicioOperaciones;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "direcciones=" + direcciones + ", telefono=" + telefono + ", rfc=" + rfc + ", fechaInscripcion=" + fechaInscripcion + ", fechaInicioOperaciones=" + fechaInicioOperaciones + ", regimenes=" + regimenes + ", obligaciones=" + obligaciones + '}';
+    }
+    
     
     
 }

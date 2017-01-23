@@ -52,5 +52,10 @@ public class Moral extends Persona implements Serializable{
     public void setFechaCreacion(Fecha fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+
+    @Override
+    public String toString() {
+        return "Moral{" + "razonSocial=" + razonSocial + ", tipoSociedad=" + tipoSociedad + ", representanteLegal=" + representanteLegal + ", fechaCreacion=" + fechaCreacion + '}';
+    }
     
 }

@@ -114,7 +114,7 @@ public class FisicaDialog extends PersonaDialog {
         if (FechaNacimientoMes.getSelectedItem() == "Noviembre") {
             mes = 11;
         }
-        if (FechaNacimientoMes.getSelectedItem() == "Diciembtre") {
+        if (FechaNacimientoMes.getSelectedItem() == "Diciembre") {
             mes = 12;
         }
 

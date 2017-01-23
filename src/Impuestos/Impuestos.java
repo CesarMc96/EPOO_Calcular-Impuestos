@@ -1,36 +1,19 @@
 
 package Impuestos;
 
-import Enum.CedularTipos;
-import Enum.Periodicidad;
-import Enum.TipoDireccion;
-import Enum.TipoPeriodo;
-import Enum.TipoPersona;
-import static Enum.TipoPersona.Moral;
-import Enum.TipoRegimen;
+import Controller.BaseDatos;
 import Excepciones.DireccionException;
 import Excepciones.IntervalosFechaException;
 import Excepciones.PersonaFisicaException;
 import Excepciones.RFCException;
 import Excepciones.RegimenException;
 import GUI.PrincipalFrame;
-import Modelo.Direccion;
-import Modelo.Fisica;
-import Modelo.Moral;
-import Modelo.Obligaciones.Cedular;
-import Modelo.Obligaciones.Ieps;
-import Modelo.Obligaciones.Incorporacion;
-import Modelo.Obligaciones.Obligacion;
-import Objetos.Fecha;
-import Objetos.HashConjunto;
-import Objetos.Periodo;
-import Objetos.RFC;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Impuestos {
 
-    public static void main(String[] args) throws DireccionException, RFCException, IntervalosFechaException, PersonaFisicaException, RegimenException {
+    public static void main(String[] args) throws DireccionException, RFCException, IntervalosFechaException, PersonaFisicaException, RegimenException, IOException, FileNotFoundException, ClassNotFoundException {
         
 //        /*DIA 1*/
 //        System.out.println("Fechas-----------");
@@ -148,7 +131,7 @@ public class Impuestos {
 //        Direccion direccionFisica = new Direccion(TipoDireccion.Fisica, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
 //        Direccion direccionFiscal = new Direccion(TipoDireccion.Fiscal, "Prolg. Almendros", "509", "1", "Las Flores", "68050", "Oaxaca de Juarez");
 //        
-//        fisica.AddDireccion(direccionFisica);
+//       fisica.AddDireccion(direccionFisica);
 //        fisica.AddDireccion(direccionFiscal);
 //        
 //        moral.AddDireccion(direccionFiscal);
@@ -190,6 +173,7 @@ public class Impuestos {
 ////        System.out.println(periodo.next().next().next().next());
 
         PrincipalFrame p = new PrincipalFrame();
+//        BaseDatos.crearUsuariosIniciales();
     }
     
 }
